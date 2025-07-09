@@ -1,6 +1,7 @@
 *node_modules
 *.excalidraw
 Exalidraw board/
+*.env
 
 
 
