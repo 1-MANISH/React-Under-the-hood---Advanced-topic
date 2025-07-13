@@ -1,0 +1,14 @@
+Higher Function mostly used with
+Class components
+
+
+Now days Hooks do this work 
+in Our Latest Function Components
+
+WE can put our Reusable Code into
+Our Higher order Components and 
+We can use this re usable code via High order components
+
+We use This Patterns
+To re use our code
+
