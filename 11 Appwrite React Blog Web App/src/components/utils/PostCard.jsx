@@ -1,17 +1,19 @@
 import {Link} from "react-router"
 import service from "../../appwrite/configuration"
+import { useEffect } from "react"
 
 function PostCard({
         $id,
         title,
         featureImage
 }) {
+
         return (
                <Link to={`/post/${$id}`}>
                        <div className='w-full bg-gray-100 rounded-xl p-4'>
                                 <div className='w-full justify-center mb-4'>
                                         <img 
-                                                src={async()=>await service.getFilePreview(featureImage) } 
+                                                src={ service.getFilePreview(featureImage) } 
                                                 alt={title}
                                                 className='rounded-xl' 
                                         />

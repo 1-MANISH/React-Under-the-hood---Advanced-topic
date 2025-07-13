@@ -51,7 +51,7 @@ function Header() {
                                         <ul className='flex ml-auto'>
                                                 {
                                                         navItems?.map((item,index)=>{
-                                                                item.active ? (
+                                                                return item.active ? (
                                                                         <li key={item.name+index}>
                                                                                 <NavLink
                                                                                         className={({isActive})=>{

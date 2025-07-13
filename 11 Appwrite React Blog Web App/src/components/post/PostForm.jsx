@@ -13,7 +13,7 @@ function PostForm({
         const {register,handleSubmit,watch,setValue,control,getValues} =useForm({
                 defaultValues:{
                         title:post?.title || "",
-                        slug:post?.slug || "",
+                        slug:post?.$id || "",
                         content:post?.content || "",
                         status:post?.status || "active"
                 }
@@ -22,7 +22,7 @@ function PostForm({
         const{userData} = useSelector(state=>state.authReducer)
 
         const submit = async(data)=>{
-
+        
                 if(post){
                         // update
                        const file =  data.image[0] ? await service.uploadFile(data.image[0]) : null
@@ -63,8 +63,8 @@ function PostForm({
                         return value
                         .trim()
                         .toLocaleLowerCase()
-                        .replace(/^[a-zA-Z\d\s-]+/g,"-")
-                        .replace(/\s/g,"-")
+                        .split(" ")
+                        .join("-")
                 }
                 return ''
         },[])
@@ -122,7 +122,7 @@ function PostForm({
                                 post && (
                                         <div className="w-full mb-4">
                                                  <img
-                                                        src={async()=>await service.getFilePreview(post.featureImage) }
+                                                        src={service.getFilePreview(post.featureImage) }
                                                         alt={post.title}
                                                         className="rounded-lg"
                                                 />

@@ -14,14 +14,13 @@ function Signup() {
         const [error,setError] = useState("")
 
         const handleRegister = async(data)=>{
-                console.log(data);
                 setError("")
                 try {
                         const session = await authService.createAccount(data)
                         if(session){
                                 const userData = await authService.getCurrentUser()
                                 if(userData){
-                                        dispatch(authLogin(userData))
+                                        dispatch(authLogin({userData}))
                                         navigate("/")
                                 }
                         }  
@@ -64,7 +63,7 @@ function Signup() {
                                                         label="Email: "
                                                         type="email"
                                                         placeholder="Enter email : "
-                                                        {...register("name",{
+                                                        {...register("email",{
                                                                 required:true,
                                                                 validate:{
                                                                         matchPattern: (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) || "Invalid email address"

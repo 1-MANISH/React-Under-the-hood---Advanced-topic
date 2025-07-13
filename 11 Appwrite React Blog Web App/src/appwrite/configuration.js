@@ -1,5 +1,5 @@
 import config from "../config/config";
-import {Client,ID,Databases,Storage,Query, ImageFormat} from "appwrite"
+import {Client,ID,Databases,Storage,Query} from "appwrite"
 
 export class Service{
 
@@ -54,11 +54,15 @@ export class Service{
 
         async deletePost(slug){
                 try {
-                        return await this.databases.deleteDocument(
+                        const res =  await this.databases.deleteDocument(
                                 config.appWriteDatabaseId,
                                 config.appWriteCollectionId,
                                 slug
                         )
+                        if(res){
+                                await this.deleteFile(slug)
+                                return res
+                        }
                 } catch (error) {
                         throw error
                 }
@@ -116,13 +120,12 @@ export class Service{
                 }
         }
 
-        async getFilePreview(fileId){
+        getFilePreview(fileId){
                 try {
-                        return await this.storage.getFilePreview(
+                        
+                        return  this.storage.getFileView(
                                 config.appWriteBucketId,
                                 fileId,
-                                200,
-                                200,
                         )
                 } catch (error) {
                         return error

@@ -11,6 +11,9 @@ import Signup from "./utils/Signup";
 import PostCard from "./utils/PostCard";
 import Select from "./utils/Select";
 import RTE from "./utils/RTE";
+import PostForm from "./post/PostForm";
+import AuthLayout from "./utils/AuthLayout";
+
 export {
         Header,
         Footer,
@@ -24,5 +27,7 @@ export {
         Signup,
         PostCard,
         Select,
-        RTE
+        RTE,
+        PostForm,
+        AuthLayout
 }

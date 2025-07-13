@@ -1,9 +1,9 @@
 import { useState,useEffect } from "react"
 import {useSelector} from "react-redux"
 import  {useNavigate } from "react-router"
-import Loader from "../index"
+import {Loader} from "../index"
 
-export default function Protected({children,authentication=true}) {
+export default function AuthLayout({children,authentication=true}) {
 
         const navigate = useNavigate()
 
